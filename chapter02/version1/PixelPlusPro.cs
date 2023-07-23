@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Diagnostics;
 
 /*
     Project Name: PixelPlus Pro
@@ -14,6 +15,9 @@ class PixelPlusPro
 {
     static void Main(string[] args)
     {
+        // Start the stopwatch
+        Stopwatch stopwatch = Stopwatch.StartNew();
+
         // Replace "inputImagePath" with the path to your color image
         // Don't forgot to try with a image which have transparency background
         string inputImagePath = "input/color_image.jpeg";
@@ -55,6 +59,14 @@ class PixelPlusPro
         {
             Console.WriteLine("An error occurred: " + ex.Message);
         }
+
+        // Stop the stopwatch
+        stopwatch.Stop();
+
+        // Get the elapsed time in milliseconds
+        long elapsedTimeMs = stopwatch.ElapsedMilliseconds;
+
+        Console.WriteLine($"Execution time: {elapsedTimeMs} ms");
     }
 
     // Convert a color image to monochrome (grayscale)
